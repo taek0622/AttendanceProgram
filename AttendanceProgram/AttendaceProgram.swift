@@ -68,6 +68,7 @@ class AttendanceProgram {
         case 1:
             inquireAllAttendances()
         case 2:
+            inquireAttendanceMenu()
         default:
             wrongInput()
         }
@@ -81,6 +82,18 @@ class AttendanceProgram {
             }
         }
         print()
+    }
+
+    private func inquireAttendanceMenu() {
+        print("# 조회할 등수를 입력해주세요.")
+        inquireAttendance(id: Int(receiveInput()!)!)
+    }
+
+    private func inquireAttendance(id: Int) {
+        networkManager.requestData(id) { data in
+            let attendance = data as! Attendance
+            print("현재 \(attendance.id)등은 \(attendance.name)입니다!\n")
+        }
     }
     private func wrongInput() {
         print("잘못된 입력입니다.\n")
