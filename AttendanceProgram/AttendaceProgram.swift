@@ -8,4 +8,9 @@
 import Foundation
 
 class AttendanceProgram {
+    init() {
+        run()
+    }
+    private func run() {
+    }
 }
