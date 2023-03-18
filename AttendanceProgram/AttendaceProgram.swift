@@ -27,6 +27,14 @@ class AttendanceProgram {
                 continue
             }
 
+            switch Int(input!)! {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            default:
+            }
         }
     }
 }
