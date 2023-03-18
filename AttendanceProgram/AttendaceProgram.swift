@@ -33,6 +33,7 @@ class AttendanceProgram {
             case 2:
                 inquireMenu()
             case 3:
+                updateAttendance()
             case 4:
             case 5:
             default:
@@ -93,6 +94,22 @@ class AttendanceProgram {
         networkManager.requestData(id) { data in
             let attendance = data as! Attendance
             print("현재 \(attendance.id)등은 \(attendance.name)입니다!\n")
+        }
+    }
+
+    private func updateAttendance() {
+        print("# 수정할 사람의 등수를 입력해주세요.")
+
+        let id = Int(receiveInput()!)
+        networkManager.requestData(id) { data in
+            let attendance = data as! Attendance
+            print("\(attendance.id)등의 현재 이름은 \(attendance.name)입니다. 변경할 이름을 입력해주세요.")
+        }
+
+        let newName = receiveInput()
+        networkManager.requestData(id, httpMethod: .put, parameter: ["name": newName!]) { data in
+            let attendance = data as! Attendance
+            print("\(attendance.id)등의 이름이 \(attendance.oldName!)에서 \(attendance.name)으로 변경되었습니다!\n")
         }
     }
     private func wrongInput() {
