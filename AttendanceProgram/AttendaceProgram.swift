@@ -46,7 +46,7 @@ class AttendanceProgram {
 
     private func receiveInput() -> String? {
         print(TextLiteral.inputMark, terminator: " ")
-        return readLine()
+        return readLine()?.precomposedStringWithCompatibilityMapping
     }
 
     private func attend() {
