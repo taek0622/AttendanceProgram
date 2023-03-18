@@ -37,6 +37,11 @@ class AttendanceProgram {
             }
         }
     }
+
+    private func receiveInput() -> String? {
+        print(TextLiteral.inputMark, terminator: " ")
+        return readLine()
+    }
     private func wrongInput() {
         print("잘못된 입력입니다.\n")
     }
