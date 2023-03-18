@@ -8,9 +8,15 @@
 import Foundation
 
 class AttendanceProgram {
+
+    let networkManager = NetworkManager.shared
+
     init() {
         run()
     }
+
     private func run() {
+        while true {
+        }
     }
 }
