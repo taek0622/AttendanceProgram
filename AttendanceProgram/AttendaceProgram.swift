@@ -35,8 +35,10 @@ class AttendanceProgram {
             case 3:
                 updateAttendance()
             case 4:
+                deleteAttendance()
             case 5:
             default:
+                wrongInput()
             }
         }
     }
@@ -112,6 +114,16 @@ class AttendanceProgram {
             print("\(attendance.id)등의 이름이 \(attendance.oldName!)에서 \(attendance.name)으로 변경되었습니다!\n")
         }
     }
+
+    private func deleteAttendance() {
+        print("# 삭제할 사람의 등수를 입력해주세요.")
+        let id = Int(receiveInput()!)!
+        networkManager.requestData(id, httpMethod: .delete) { data in
+            let attendance = data as! Attendance
+            print("출석에서 \(attendance.id)등 \(attendance.name)가 삭제되었습니다!\n")
+        }
+    }
+
     private func wrongInput() {
         print("잘못된 입력입니다.\n")
     }
