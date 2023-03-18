@@ -31,6 +31,7 @@ class AttendanceProgram {
             case 1:
                 attend()
             case 2:
+                inquireMenu()
             case 3:
             case 4:
             case 5:
@@ -54,6 +55,20 @@ class AttendanceProgram {
                 let attendance = data as! Attendance
                 print("\(attendance.name)님은 \(attendance.id)등입니다!")
             }
+        }
+    }
+
+    private func inquireMenu() {
+        print("# 원하는 조회 메뉴를 선택해주세요.")
+        print("1. 전체 조회   2. 특정 등수 조회")
+
+        let selectedMenu = Int(receiveInput()!)!
+
+        switch selectedMenu {
+        case 1:
+        case 2:
+        default:
+            wrongInput()
         }
     }
     private func wrongInput() {
