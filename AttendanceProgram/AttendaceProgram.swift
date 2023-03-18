@@ -29,6 +29,7 @@ class AttendanceProgram {
 
             switch Int(input!)! {
             case 1:
+                attend()
             case 2:
             case 3:
             case 4:
@@ -41,6 +42,19 @@ class AttendanceProgram {
     private func receiveInput() -> String? {
         print(TextLiteral.inputMark, terminator: " ")
         return readLine()
+    }
+
+    private func attend() {
+        print("# 출석할 사람의 이름을 입력해주세요.")
+        let name = receiveInput()
+        if name == "" || name == nil {
+            wrongInput()
+        } else {
+            networkManager.requestData(httpMethod: .post, parameter: ["name": name!]) { data in
+                let attendance = data as! Attendance
+                print("\(attendance.name)님은 \(attendance.id)등입니다!")
+            }
+        }
     }
     private func wrongInput() {
         print("잘못된 입력입니다.\n")
