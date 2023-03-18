@@ -37,4 +37,7 @@ class AttendanceProgram {
             }
         }
     }
+    private func wrongInput() {
+        print("잘못된 입력입니다.\n")
+    }
 }
