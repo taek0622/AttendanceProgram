@@ -66,10 +66,21 @@ class AttendanceProgram {
 
         switch selectedMenu {
         case 1:
+            inquireAllAttendances()
         case 2:
         default:
             wrongInput()
         }
+    }
+
+    private func inquireAllAttendances() {
+        print("# 출석현황")
+        networkManager.requestData { data in
+            (data as! [Attendance]).forEach {
+                print("\($0.id)등 \($0.name)")
+            }
+        }
+        print()
     }
     private func wrongInput() {
         print("잘못된 입력입니다.\n")
