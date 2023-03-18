@@ -37,6 +37,7 @@ class AttendanceProgram {
             case 4:
                 deleteAttendance()
             case 5:
+                exitProgram()
             default:
                 wrongInput()
             }
@@ -122,6 +123,11 @@ class AttendanceProgram {
             let attendance = data as! Attendance
             print("출석에서 \(attendance.id)등 \(attendance.name)가 삭제되었습니다!\n")
         }
+    }
+
+    private func exitProgram() {
+        print("출석 프로그램을 종료합니다!")
+        exit(0)
     }
 
     private func wrongInput() {
