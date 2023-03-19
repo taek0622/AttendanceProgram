@@ -55,16 +55,21 @@ class NetworkManager {
                     completion(responseData)
                 }
             case 400:
-                print("400 \(data)")
+                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
+                print(errorMessage.message)
             case 403:
-                print("403 \(data)")
+                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
+                print(errorMessage.message)
             case 404:
-                print("404 \(data)")
+                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
+                print(errorMessage.message)
             case 500:
-                print("500 \(data)")
+                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
+                print("\(errorMessage.message) (상세정보: \(errorMessage.errorInfo!)")
             default:
                 completion(String(decoding: data, as: UTF8.self))
             }
+
             semaphore.signal()
         }.resume()
 
